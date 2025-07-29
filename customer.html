@@ -1,14 +1,68 @@
+<!-- customer.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Customer | New Friends Coffee Bar</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>New Friends Coffee Bar – Customer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff0e6;
+      padding: 20px;
+    }
+    h1 {
+      color: #5a2d0c;
+    }
+    .item {
+      background: #fff;
+      border: 1px solid #d9b99b;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+    }
+    .item button {
+      background: #5a2d0c;
+      color: white;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .item button:hover {
+      background: #7a3e1e;
+    }
+  </style>
 </head>
-<body class="simple-page">
-  <h1>☕ Welcome to New Friends Coffee Bar!</h1>
-  <p>View our menu and order via WhatsApp.</p>
-  <a href="https://wa.me/91XXXXXXXXXX" class="btn">Order Now on WhatsApp</a>
+<body>
+
+  <h1>Welcome to New Friends Coffee Bar ☕</h1>
+  <div id="menu"></div>
+
+  <script>
+    const items = [
+      { name: "Tea", price: 10 },
+      { name: "Coffee", price: 15 },
+      { name: "Boost", price: 12 },
+      { name: "Badam Milk", price: 20 }
+    ];
+
+    const menuDiv = document.getElementById('menu');
+    items.forEach(item => {
+      const div = document.createElement('div');
+      div.className = 'item';
+      div.innerHTML = `<strong>${item.name}</strong> - ₹${item.price} 
+        <button onclick="order('${item.name}', ${item.price})">Order</button>`;
+      menuDiv.appendChild(div);
+    });
+
+    function order(item, price) {
+      const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+      orders.push({ item, price, time: new Date().toLocaleString() });
+      localStorage.setItem('orders', JSON.stringify(orders));
+      alert(`${item} ordered successfully!`);
+    }
+  </script>
+
 </body>
 </html>
