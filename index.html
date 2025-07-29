@@ -6,6 +6,18 @@
   <title>New Friends Coffee Bar - Login</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+  <script>
+  function checkPincode() {
+    const pin = document.getElementById("pincode").value;
+    if (pin === "1234") {
+      window.location.href = "admin.html";
+    } else {
+      window.location.href = "customer.html";
+    }
+    return false; // prevent default form action
+  }
+</script>
+
 <body>
   <div class="container">
     <div class="left">
