@@ -15,10 +15,11 @@
     <div class="right">
       <h2>Welcome Back</h2>
       <p>Enter your pincode to continue</p>
-      <form>
-        <input type="password" placeholder="Enter Pincode" />
-        <button type="submit">Enter</button>
-      </form>
+       <form onsubmit="return checkPincode()">
+         <input type="password" id="pincode" placeholder="Enter Pincode" required />
+         <button type="submit">Enter</button>
+       </form>
+
       <div class="admin-icon" onclick="alert('Admin login coming soon!')">🔒</div>
     </div>
   </div>
