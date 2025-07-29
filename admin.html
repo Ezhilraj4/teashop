@@ -3,18 +3,98 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin Panel | New Friends Coffee Bar</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Admin Panel - New Friends Coffee Bar</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #3e2723;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+    main {
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    section {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      margin-top: 0;
+    }
+    input, button {
+      width: 100%;
+      padding: 8px;
+      margin: 6px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 6px;
+      text-align: left;
+    }
+  </style>
 </head>
-<body class="simple-page">
-  <h1>🔒 Admin Panel</h1>
-  <p>Here you can add items, edit prices, and view orders.</p>
-  <ul>
-    <li>✔️ Change prices</li>
-    <li>✔️ Add new items</li>
-    <li>✔️ Calculator & billing machine</li>
-    <li>✔️ View orders</li>
-  </ul>
-  <p style="color: gray;">(Functionality coming soon...)</p>
-</body>
-</html>
+<body>
+  <header>
+    <h1>Admin Panel - New Friends Coffee Bar</h1>
+  </header>
+  <main>
+    <!-- Change Prices -->
+    <section>
+      <h2>Change Item Prices</h2>
+      <input type="text" id="itemName" placeholder="Item Name">
+      <input type="number" id="newPrice" placeholder="New Price">
+      <button onclick="changePrice()">Update Price</button>
+    </section>
+
+    <!-- Add Items -->
+    <section>
+      <h2>Add New Item</h2>
+      <input type="text" id="newItemName" placeholder="Item Name">
+      <input type="number" id="newItemPrice" placeholder="Price">
+      <button onclick="addItem()">Add Item</button>
+    </section>
+
+    <!-- Calculator -->
+    <section>
+      <h2>Billing Calculator</h2>
+      <input type="text" id="calcInput" placeholder="e.g. 100 + 200 - 50">
+      <button onclick="calculate()">Calculate</button>
+      <p id="calcResult"></p>
+    </section>
+
+    <!-- View Orders -->
+    <section style="flex: 1 1 600px;">
+      <h2>Customer Orders</h2>
+      <table id="orderTable">
+        <thead>
+          <tr><th>Name</th><th>Order</th><th>Total</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Kumar</td><td>Tea x2</td><td>₹20</td></tr>
+          <tr><td>Anu</td><td>Coffee x1</td><td>₹15</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script>
+    function changePrice() {
+      const item
