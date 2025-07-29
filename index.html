@@ -1,39 +1,52 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>New Friends Coffee Bar - Login</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-  <script>
-  function checkPincode() {
-    const pin = document.getElementById("pincode").value;
-    if (pin === "1234") {
-      window.location.href = "admin.html";
-    } else {
-      window.location.href = "customer.html";
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f7efe5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
     }
-    return false; // prevent default form action
-  }
-</script>
-
+    input {
+      padding: 8px;
+      margin: 10px;
+      width: 200px;
+    }
+    button {
+      padding: 8px 20px;
+    }
+    .admin-icon {
+      margin-top: 15px;
+      font-size: 20px;
+      cursor: pointer;
+      color: blue;
+    }
+  </style>
+</head>
 <body>
-  <div class="container">
-    <div class="left">
-      <img src="coffee.jpg" alt="Coffee" />
-      <div class="quote">“Espress Yourself.”</div>
-    </div>
-    <div class="right">
-      <h2>Welcome Back</h2>
-      <p>Enter your pincode to continue</p>
-       <form onsubmit="return checkPincode()">
-         <input type="password" id="pincode" placeholder="Enter Pincode" required />
-         <button type="submit">Enter</button>
-       </form>
-
-      <div class="admin-icon" onclick="alert('Admin login coming soon!')">🔒</div>
-    </div>
+  <h2>Welcome to New Friends Coffee Bar</h2>
+  <input type="text" id="pincode" placeholder="Enter Pincode" />
+  <button onclick="login()">Enter</button>
+  <div class="admin-icon" onclick="location.href='admin.html'">
+    🔒 Admin Panel
   </div>
+  <script>
+    function login() {
+      const pin = document.getElementById('pincode').value;
+      if (pin.length >= 3) {
+        window.location.href = 'customer.html';
+      } else {
+        alert('Please enter a valid pincode');
+      }
+    }
+  </script>
 </body>
 </html>
