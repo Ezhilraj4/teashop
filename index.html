@@ -1,52 +1,84 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>New Friends Coffee Bar - Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>New Friends Coffee Bar – Login</title>
   <style>
     body {
-      font-family: sans-serif;
-      background: #f7efe5;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
+      font-family: Arial, sans-serif;
+      background: #fffaf0;
+      text-align: center;
+      padding-top: 100px;
     }
-    input {
-      padding: 8px;
-      margin: 10px;
-      width: 200px;
+    h1 {
+      color: #5a2d0c;
+    }
+    input[type="text"] {
+      padding: 10px;
+      font-size: 18px;
+      width: 220px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
     }
     button {
-      padding: 8px 20px;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #5a2d0c;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
     }
     .admin-icon {
-      margin-top: 15px;
-      font-size: 20px;
+      margin-top: 40px;
+      display: inline-block;
       cursor: pointer;
-      color: blue;
+      opacity: 0.6;
+    }
+    .admin-icon img {
+      width: 40px;
+    }
+    .admin-icon:hover {
+      opacity: 1;
     }
   </style>
 </head>
 <body>
-  <h2>Welcome to New Friends Coffee Bar</h2>
-  <input type="text" id="pincode" placeholder="Enter Pincode" />
-  <button onclick="login()">Enter</button>
-  <div class="admin-icon" onclick="location.href='admin.html'">
-    🔒 Admin Panel
+
+  <h1>New Friends Coffee Bar</h1>
+  <p>Enter your PIN code to continue</p>
+  <input type="text" id="pincode" placeholder="Enter PIN code" />
+  <br/>
+  <button onclick="goToCustomer()">Login</button>
+
+  <!-- 🔐 Admin Icon at Bottom -->
+  <div class="admin-icon" onclick="goToAdmin()">
+    <img src="https://cdn-icons-png.flaticon.com/512/1828/1828490.png" alt="Admin" title="Admin Panel"/>
+    <p style="font-size: 12px; color: #5a2d0c;">Admin</p>
   </div>
+
   <script>
-    function login() {
+    function goToCustomer() {
       const pin = document.getElementById('pincode').value;
-      if (pin.length >= 3) {
-        window.location.href = 'customer.html';
+      if (pin.trim()) {
+        // Save PIN if needed
+        window.location.href = "customer.html";
       } else {
-        alert('Please enter a valid pincode');
+        alert("Please enter a PIN code.");
+      }
+    }
+
+    function goToAdmin() {
+      const pass = prompt("Enter admin password:");
+      if (pass === "1234") {  // Change this password if needed
+        window.location.href = "admin.html";
+      } else {
+        alert("Access Denied");
       }
     }
   </script>
+
 </body>
 </html>
